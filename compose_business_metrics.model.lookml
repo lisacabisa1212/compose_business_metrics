@@ -42,21 +42,23 @@
       sql_on: ${billables.account_id} = ${accounts.id}
       relationship: many_to_one
 
-    - join: providers
+    - join: billables_groups
       type: left_outer 
-      sql_on: ${accounts.provider_id} = ${providers.id}
+      sql_on: ${billables.billable_group_id} = ${billables_groups.id}
       relationship: many_to_one
+
+- explore: billables_groups
+  joins:
+    - join: billables
+      type: left_outer 
+      sql_on: ${billables.billable_group_id} = ${billables_groups.id}
+      relationship: one_to_many
 
 - explore: invoices
   joins:
     - join: accounts
       type: left_outer 
       sql_on: ${invoices.account_id} = ${accounts.id}
-      relationship: many_to_one
-
-    - join: providers
-      type: left_outer 
-      sql_on: ${accounts.provider_id} = ${providers.id}
       relationship: many_to_one
 
 - explore: providers
