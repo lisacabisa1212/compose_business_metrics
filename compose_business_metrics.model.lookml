@@ -4,6 +4,7 @@
 - include: "*.dashboard.lookml"  # include all the dashboards
 
 - explore: accounts
+  sql_always_where: ${accounts.deleted_date} is null
   joins:
     - join: providers
       type: left_outer 
@@ -36,6 +37,7 @@
       relationship: one_to_many
 
 - explore: billables
+  sql_always_where: ${billables.deleted_date} is null
   joins:
     - join: accounts
       type: left_outer 
@@ -55,6 +57,7 @@
       relationship: one_to_many
 
 - explore: invoices
+  sql_always_where: ${invoices.deleted_date} is null
   joins:
     - join: accounts
       type: left_outer 
