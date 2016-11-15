@@ -92,6 +92,8 @@
 
 - explore: vw_pdt_funnel
 
+- explore: vw_pdt_monthly_accounts
+
 - explore: tracks
   joins:
     - join: accounts
